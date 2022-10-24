@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RepPrintService } from './rep-print.service';
+import { RepPrintService } from './Services/print/rep-print.service';
 
 
 @Component({

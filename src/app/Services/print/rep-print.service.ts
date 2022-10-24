@@ -3,7 +3,10 @@ import { Injectable } from '@angular/core';
 
 export class RepPrintService {
 
-  printRep(tableId: string, name?: string) {
+  printRep(tableId: string,
+          reportName?: string,
+          rtl=false,
+          ) {
 
     let printContents, popupWin;
     printContents = document.getElementById(tableId)!.innerHTML;
@@ -13,12 +16,13 @@ export class RepPrintService {
     popupWin!.document.write(`
     <html>
     <head>
+    <link rel="stylesheet" href="assets/print.scss">
       <title>Print tab</title>
 
     </head>
     <body style="direction: rtl;padding:10px, text-align: center;" onload="window.print();window.close()"><table class="table table-bordered">${printContents}</table></body>
     </html>`);
-    popupWin!.document.close();
+     popupWin!.document.close();
   }
 
 }

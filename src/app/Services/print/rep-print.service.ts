@@ -4,9 +4,9 @@ import { Injectable } from '@angular/core';
 export class RepPrintService {
 
   printRep(tableId: string,
-          reportName?: string,
-          rtl=false,
-          ) {
+    reportName?: string,
+    rtl = false,
+  ) {
 
     let printContents, popupWin;
     printContents = document.getElementById(tableId)!.innerHTML;
@@ -16,13 +16,27 @@ export class RepPrintService {
     popupWin!.document.write(`
     <html>
     <head>
-    <link rel="stylesheet" href="assets/print.scss">
-      <title>Print tab</title>
+    <link rel="stylesheet" href="assets/print/print.scss">
+      <title>${reportName}</title>
 
     </head>
-    <body style="direction: rtl;padding:10px, text-align: center;" onload="window.print();window.close()"><table class="table table-bordered">${printContents}</table></body>
+    <body style="padding:10px, text-align: center;" onload="window.print();window.close()">
+    ${this.header('Qattan report')}
+    <table>${printContents}</table></body>
     </html>`);
-     popupWin!.document.close();
+    // popupWin!.document.close();
   }
 
+  // report Title company name & logo
+  private header(title?: string): string {
+    return `
+  <header>
+  <div class="header">
+    <div class="child"><img src="assets/print/logo-dark.png"> </div>
+    <div class="title"><h3>Kuwait Investment Company</h3>${title}</div>
+  </div>
+  </header>
+  `
+
+  }
 }

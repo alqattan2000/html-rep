@@ -1,0 +1,30 @@
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+    --webkit-print-color-adjust: exact;
+  }
+  @page {
+    size: A4 ;
+  }
+
+  .header {
+    display: flex;
+  }
+
+
+  h3 {
+    margin: .2rem !important;
+  }
+  html img {
+    float: right;
+  }
+  .title{
+  align-self: center;
+  text-align: center;
+  width: 100%;
+  }
+  table {
+    width: 100%;
+  }
+
+}

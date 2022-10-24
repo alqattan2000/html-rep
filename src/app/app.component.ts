@@ -13,6 +13,6 @@ export class AppComponent {
   title = 'html-rep';
   exportTable(){
     console.log('fdsf','fsdf')
-  this.RepPrintService.printRep('print','test')
+  this.RepPrintService.printRep('print','Statment Of Account',true)
   }
 }

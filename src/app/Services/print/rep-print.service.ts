@@ -7,22 +7,23 @@ export class RepPrintService {
     reportName?: string,
     rtl = false,
   ) {
-
+    const dir = rtl ? 'rtl' : 'ltr'
     let printContents, popupWin;
     printContents = document.getElementById(tableId)!.innerHTML;
     console.log(printContents);
     popupWin = window.open('', '_blank', 'top=0,left=0,height=auto,width=auto');
     popupWin!.document.open();
     popupWin!.document.write(`
-    <html>
+    <html dir="${dir}">
     <head>
     <link rel="stylesheet" href="assets/print/print.scss">
       <title>${reportName}</title>
 
     </head>
     <body style="padding:10px, text-align: center;" onload="window.print();window.close()">
-    ${this.header('Qattan report')}
-    <table>${printContents}</table></body>
+    ${this.header(reportName)}
+    <div class="reportmargin"> <table>${printContents}</table> </div>
+    </body>
     </html>`);
     // popupWin!.document.close();
   }
